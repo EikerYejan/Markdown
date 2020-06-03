@@ -1,7 +1,24 @@
 * {
   scroll-behavior: smooth;
+  font-family: $font_main;
+}
+
+body {
+  background: $black;
+  min-height: 100vh;
+  margin: 0;
+  color: $white;
+}
+
+textarea {
+  font-family: $font_mono;
+}
+
+#app {
+  padding: 170 * $px 5% 35 * $px;
 }
 
 ul {
   list-style: disc;
+  list-style-position: inside;
 }
