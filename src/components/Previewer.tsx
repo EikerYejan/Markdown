@@ -83,6 +83,7 @@ const Previewer: React.FC = () => {
   return (
     <div className="columns is-multiline">
       <div className="column is-6 input-wrapper">
+        <p className="label md-label">Markdown</p>
         <textarea value={markdown} onChange={handleChange} />
         <button
           className="copy-button"
@@ -95,6 +96,7 @@ const Previewer: React.FC = () => {
         </button>
       </div>
       <div className="column is-6 output-wrapper">
+        <p className="label html-label">HTML</p>
         <section
           className="output-inner"
           dangerouslySetInnerHTML={{ __html: html }} // eslint-disable-line
