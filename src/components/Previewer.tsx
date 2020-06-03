@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import marked from "marked"
 import { sanitize } from "dompurify"
+import copy from "copy-to-clipboard"
+import clipboard from "../assets/images/clipboard.svg"
 import "../assets/styles/components/Previewer.scss"
 
 const parse = (html: string): string => {
@@ -50,16 +52,51 @@ const Previewer: React.FC = () => {
     setHTML(parsedHtml)
   }
 
+  /**
+   * Copy text to clipboard
+   */
+  const handleCopy = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
+    /* Prevent default */
+    e.preventDefault()
+
+    /* Get dataset */
+    const dataset = e.currentTarget.dataset.copy
+
+    /* Define text to copy */
+    const toCopy = dataset === "markdown" ? markdown : html
+
+    /* Copy to clipboard */
+    copy(toCopy)
+  }
+
   return (
     <div className="columns is-multiline">
       <div className="column is-6 input-wrapper">
         <textarea value={markdown} onChange={handleChange} />
+        <button
+          className="copy-button"
+          data-copy="markdown"
+          title="Copy to clipboard"
+          onClick={handleCopy}
+          type="button"
+        >
+          <img src={clipboard} alt="copy-markdown" />
+        </button>
       </div>
       <div className="column is-6 output-wrapper">
         <section
           className="output-inner"
           dangerouslySetInnerHTML={{ __html: html }} // eslint-disable-line
         />
+        <button
+          className="copy-button"
+          data-copy="html"
+          title="Copy to clipboard"
+          onClick={handleCopy}
+          type="button"
+        >
+          <img src={clipboard} alt="copy-html" />
+        </button>
       </div>
     </div>
   )
