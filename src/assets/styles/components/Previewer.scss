@@ -1,0 +1,119 @@
+@import "../common/common";
+
+$height: calc(100vh - #{170 * $px});
+
+.previewer-wrapper {
+  border: 1 * $px solid $borders;
+
+  &,
+  .columns,
+  .column,
+  textarea {
+    min-height: $height;
+  }
+
+  .columns {
+    margin: 0 !important;
+  }
+
+  .input-wrapper,
+  .output-wrapper {
+    padding: 0;
+    position: relative;
+  }
+
+  .input-wrapper {
+    textarea {
+      width: 100%;
+      height: 100%;
+      resize: none;
+      background: none;
+      padding: 30 * $px 20 * $px;
+      color: $white;
+      border: none;
+      border-width: 1 * $px;
+      border-color: $borders;
+      border-right-style: solid;
+    }
+  }
+
+  .output-wrapper {
+    h1 {
+      font-size: 28 * $px;
+    }
+
+    h2 {
+      font-size: 25 * $px;
+    }
+
+    h3 {
+      font-size: 20 * $px;
+    }
+
+    h4 {
+      font-size: 18 * $px;
+    }
+
+    code {
+      color: $black;
+      font-family: $font_mono;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    ul,
+    code {
+      margin-bottom: 10 * $px;
+    }
+
+    .output-inner {
+      padding: 30 * $px 20 * $px;
+    }
+  }
+
+  .copy-button {
+    @include flexCenter;
+    padding: 6 * $px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40 * $px;
+    height: 40 * $px;
+    background: none;
+    border: none;
+    border-color: $borders;
+    border-width: 1 * $px;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      filter: invert(1);
+    }
+  }
+}
+
+@media screen and (max-width: 768 * $px) {
+  .previewer-wrapper {
+    .output-wrapper .output-inner,
+    .input-wrapper textarea {
+      padding-top: 55 * $px;
+    }
+
+    .input-wrapper {
+      height: $height;
+      min-height: unset;
+
+      textarea {
+        height: 100%;
+        border-right-style: none;
+        border-bottom-style: solid;
+      }
+    }
+  }
+}
