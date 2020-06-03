@@ -1,8 +1,9 @@
 import React from "react"
-import "./assets/styles/App.scss"
+import Previewer from "./Previewer"
+import "../assets/styles/App.scss"
 
 const App: React.FC = () => (
-  <div className="App">
+  <div id="App">
     <header className="App-header">
       <p>
         Edit <code>src/App.tsx</code> and save to reload.
@@ -16,6 +17,9 @@ const App: React.FC = () => (
         Learn React
       </a>
     </header>
+    <div className="previewer-wrapper">
+      <Previewer />
+    </div>
   </div>
 )
 
