@@ -74,7 +74,10 @@ const Previewer: React.FC = () => {
     copy(toCopy)
 
     /* Show toast */
-    toast.success("Copied to clipboard")
+    toast.success("Copied to clipboard", {
+      position: "top-right",
+      hideAfter: 2,
+    })
   }
 
   return (
