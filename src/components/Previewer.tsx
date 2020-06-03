@@ -2,9 +2,14 @@ import React, { useState } from "react"
 import marked from "marked"
 import { sanitize } from "dompurify"
 import copy from "copy-to-clipboard"
+import toast from "cogo-toast"
 import clipboard from "../assets/images/clipboard.svg"
 import "../assets/styles/components/Previewer.scss"
 
+/**
+ * Parse Markdown string
+ * @param html
+ */
 const parse = (html: string): string => {
   // Parse markdown
   const parsed = marked(html, {
@@ -41,13 +46,13 @@ const Previewer: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     e.preventDefault()
 
-    // Value
+    /* Value */
     const { value } = e.currentTarget
 
-    // Parse string
+    /* Parse string */
     const parsedHtml = parse(value)
 
-    // Update state
+    /* Update state */
     setMarkdown(value)
     setHTML(parsedHtml)
   }
@@ -67,6 +72,9 @@ const Previewer: React.FC = () => {
 
     /* Copy to clipboard */
     copy(toCopy)
+
+    /* Show toast */
+    toast.success("Copied to clipboard")
   }
 
   return (
