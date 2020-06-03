@@ -1,0 +1,70 @@
+@import "../common/common";
+
+.previewer-wrapper {
+  border: 1 * $px solid $borders;
+
+  &,
+  .columns,
+  .column {
+    min-height: calc(100vh - #{170 * $px});
+  }
+
+  .columns {
+    margin: 0 !important;
+  }
+
+  .input-wrapper,
+  .output-wrapper {
+    padding: 0;
+  }
+
+  .input-wrapper {
+    textarea {
+      width: 100%;
+      height: 100%;
+      resize: none;
+      background: none;
+      padding: 20 * $px;
+      color: $white;
+      border: none;
+      border-right: 1 * $px solid $borders;
+    }
+  }
+
+  .output-wrapper {
+    h1 {
+      font-size: 28 * $px;
+    }
+
+    h2 {
+      font-size: 25 * $px;
+    }
+
+    h3 {
+      font-size: 20 * $px;
+    }
+
+    h4 {
+      font-size: 18 * $px;
+    }
+
+    code {
+      color: $black;
+      font-family: $font_mono;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    ul,
+    code {
+      margin-bottom: 10 * $px;
+    }
+
+    .output-inner {
+      padding: 20 * $px;
+    }
+  }
+}
