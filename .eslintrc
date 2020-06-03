@@ -4,11 +4,9 @@
     "react-app",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
-    "plugin:jsx-a11y/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["jsx-a11y", "prettier"],
+  "plugins": ["jsx-a11y"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -18,15 +16,10 @@
   },
   "rules": {
     "semi": 0,
+    "quotes": 0,
+    "linebreak-style": 0,
     "import/no-unresolved": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-    "prettier/prettier": [
-      "error",
-      {
-        "semi": false,
-        "quotes": false
-      }
-    ],
     "import/extensions": [
       "error",
       {
