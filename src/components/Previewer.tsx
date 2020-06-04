@@ -1,36 +1,9 @@
-import React, { useState } from "react"
-import marked from "marked"
-import { sanitize } from "dompurify"
-import copy from "copy-to-clipboard"
-import toast from "cogo-toast"
-import clipboard from "../assets/images/clipboard.svg"
+import React, { useState, useRef } from "react"
+import { parse, pretty, initialHTML, initialMarkdown } from "../utils/Utils"
+import CopyButton from "./CopyButton"
+import code from "../assets/images/code.svg"
+import content from "../assets/images/list.svg"
 import "../assets/styles/components/Previewer.scss"
-
-/**
- * Parse Markdown string
- * @param html
- */
-const parse = (html: string): string => {
-  // Parse markdown
-  const parsed = marked(html, {
-    headerIds: false,
-    gfm: true,
-    breaks: true,
-  })
-
-  // Sanitize HTML
-  return sanitize(parsed)
-}
-
-const initialMarkdown = `# How does this previewer work?
-
-- You write your Markdown on the left side.
-- You get your parsed HTML on the left side.
-
-${"`<b>This is a code block.</b>`"}
-
-Check the [repo](https://github.com/EikerYejan/Markdown).`
-const initialHTML = parse(initialMarkdown)
 
 const Previewer: React.FC = () => {
   /**
@@ -38,6 +11,10 @@ const Previewer: React.FC = () => {
    */
   const [markdown, setMarkdown] = useState(initialMarkdown)
   const [html, setHTML] = useState(initialHTML)
+  const [showSource, setOutput] = useState(false)
+
+  /* Container ref */
+  const container = useRef<HTMLDivElement>(null)
 
   /**
    * Handle input change
@@ -58,55 +35,50 @@ const Previewer: React.FC = () => {
   }
 
   /**
-   * Copy text to clipboard
+   * Switch shown output
+   * @param e
    */
-  const handleCopy = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
+  const switchOutput = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
     /* Prevent default */
     e.preventDefault()
 
-    /* Get dataset */
-    const dataset = e.currentTarget.dataset.copy
+    /* Animate */
+    container.current?.classList.add("is-changing")
 
-    /* Define text to copy */
-    const toCopy = dataset === "markdown" ? markdown : html
+    setTimeout(() => {
+      /* Update state */
+      setOutput((prevState) => !prevState)
 
-    /* Copy to clipboard */
-    copy(toCopy)
-
-    /* Show toast */
-    toast.success("Copied to clipboard", {
-      position: "top-right",
-      hideAfter: 2,
-    })
+      /* Show container */
+      container.current?.classList.remove("is-changing")
+    }, 500)
   }
 
   return (
     <div className="columns is-multiline">
       <div className="column is-6 input-wrapper">
+        <p className="label md-label">Markdown</p>
         <textarea value={markdown} onChange={handleChange} />
-        <button
-          className="copy-button"
-          data-copy="markdown"
-          title="Copy to clipboard"
-          onClick={handleCopy}
-          type="button"
-        >
-          <img src={clipboard} alt="copy-markdown" />
-        </button>
+        <CopyButton toCopy={markdown} />
       </div>
-      <div className="column is-6 output-wrapper">
-        <section
-          className="output-inner"
-          dangerouslySetInnerHTML={{ __html: html }} // eslint-disable-line
-        />
+      <div ref={container} className="column is-6 output-wrapper">
+        <p className="label html-label">HTML</p>
+        {showSource ? (
+          <section>
+            <pre>{pretty(html)}</pre>
+          </section>
+        ) : (
+          <section dangerouslySetInnerHTML={{ __html: html }} /> // eslint-disable-line
+        )}
+        <CopyButton className="copy-html" toCopy={html} />
         <button
-          className="copy-button"
-          data-copy="html"
-          title="Copy to clipboard"
-          onClick={handleCopy}
+          onClick={switchOutput}
           type="button"
+          title="Show code"
+          className={`output-switch ${showSource ? "is-active" : ""}`}
         >
-          <img src={clipboard} alt="copy-html" />
+          <img className="code" src={code} alt="show-code" />
+          <img className="content" src={content} alt="show-content" />
         </button>
       </div>
     </div>

@@ -18,6 +18,15 @@ textarea {
   padding: 125 * $px 5% 35 * $px;
 }
 
+button {
+  background: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
 ul {
   list-style: disc;
   list-style-position: inside;

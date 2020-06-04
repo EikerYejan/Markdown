@@ -22,13 +22,37 @@ $height: calc(100vh - #{170 * $px});
     position: relative;
   }
 
+  .label {
+    @include flexCenter;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-color: $borders;
+    border-width: 1 * $px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    padding: 0 18 * $px;
+    background: $black;
+    font-weight: 100;
+    margin: 0 !important;
+    height: 40 * $px;
+
+    &.md-label {
+      color: $blue;
+    }
+
+    &.html-label {
+      color: $red;
+    }
+  }
+
   .input-wrapper {
     textarea {
       width: 100%;
       height: 100%;
       resize: none;
       background: none;
-      padding: 30 * $px 20 * $px;
+      padding: 60 * $px 20 * $px;
       color: $white;
       border: none;
       border-width: 1 * $px;
@@ -57,6 +81,16 @@ $height: calc(100vh - #{170 * $px});
     code {
       color: $black;
       font-family: $font_mono;
+      display: block;
+    }
+
+    pre {
+      padding: 0;
+      background: none;
+      color: $white;
+      font-family: $font_mono;
+      white-space: pre-wrap;
+      overflow: hidden;
     }
 
     h1,
@@ -64,43 +98,82 @@ $height: calc(100vh - #{170 * $px});
     h3,
     h4,
     p,
+    a,
     ul,
     code {
       margin-bottom: 10 * $px;
+      word-break: break-all;
+      line-height: 1.2;
     }
 
-    .output-inner {
-      padding: 30 * $px 20 * $px;
+    section {
+      padding: 60 * $px 20 * $px;
+      opacity: 1;
+      transition: 450ms cubic-bezier(1, 0, 0, 1);
     }
-  }
 
-  .copy-button {
-    @include flexCenter;
-    padding: 6 * $px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40 * $px;
-    height: 40 * $px;
-    background: none;
-    border: none;
-    border-color: $borders;
-    border-width: 1 * $px;
-    border-bottom-style: solid;
-    border-left-style: solid;
-    cursor: pointer;
+    &.is-changing {
+      section {
+        opacity: 0;
+      }
+    }
 
-    img {
-      width: 100%;
-      height: 100%;
-      filter: invert(1);
+    .output-switch {
+      @include flexCenter;
+      background: none;
+      position: absolute;
+      top: 0;
+      right: 40 * $px;
+      width: 40 * $px;
+      height: 40 * $px;
+      padding: 0;
+      border: 0;
+      border-width: 1 * $px;
+      border-color: $borders;
+      border-bottom-style: solid;
+      border-left-style: solid;
+      cursor: pointer;
+      overflow: hidden;
+      transition: 400ms cubic-bezier(1, 0, 0, 1);
+
+      img {
+        position: absolute;
+        display: block;
+        width: 40 * $px;
+        height: 40 * $px;
+        padding: 4 * $px;
+        transition: inherit;
+        filter: invert(1);
+
+        &.code {
+          top: -35 * $px;
+        }
+
+        &.content {
+          bottom: 0;
+        }
+      }
+
+      &.is-active {
+        background: $red;
+
+        img {
+          &.code {
+            top: 0;
+          }
+
+          &.content {
+            bottom: -35 * $px;
+          }
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 768 * $px) {
   .previewer-wrapper {
-    .output-wrapper .output-inner,
+    .output-wrapper section,
     .input-wrapper textarea {
       padding-top: 55 * $px;
     }
@@ -113,6 +186,12 @@ $height: calc(100vh - #{170 * $px});
         height: 100%;
         border-right-style: none;
         border-bottom-style: solid;
+      }
+    }
+
+    .output-wrapper {
+      section {
+        overflow-y: scroll;
       }
     }
   }
