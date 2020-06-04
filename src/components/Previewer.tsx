@@ -1,17 +1,23 @@
-import React, { useState, useRef } from "react"
-import { parse, initialHTML, initialMarkdown } from "../utils/Utils"
-import CopyButton from "./CopyButton"
+import React, { useState, useRef, lazy } from "react"
+import { parse, initialMarkdown, initialHTML } from "../utils/Utils"
 import code from "../assets/images/code.svg"
 import content from "../assets/images/list.svg"
 import "../assets/styles/components/Previewer.scss"
+
+// Types
+type HandleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+type SwitchChange = (e: React.SyntheticEvent<HTMLButtonElement>) => void
+
+// Copy yo clipboard button
+const CopyButton = lazy(() => import("./CopyButton"))
 
 const Previewer: React.FC = () => {
   /**
    * Initial state
    */
-  const [markdown, setMarkdown] = useState(initialMarkdown)
-  const [html, setHTML] = useState(initialHTML)
-  const [showSource, setOutput] = useState(false)
+  const [markdown, setMarkdown] = useState<string>(initialMarkdown)
+  const [html, setHTML] = useState<string>(initialHTML)
+  const [showSource, setOutput] = useState<boolean>(false)
 
   /* Container ref */
   const container = useRef<HTMLDivElement>(null)
@@ -20,7 +26,7 @@ const Previewer: React.FC = () => {
    * Handle input change
    * @param e
    */
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+  const handleChange: HandleChange = (e) => {
     e.preventDefault()
 
     /* Value */
@@ -38,7 +44,7 @@ const Previewer: React.FC = () => {
    * Switch shown output
    * @param e
    */
-  const switchOutput = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
+  const switchOutput: SwitchChange = (e) => {
     /* Prevent default */
     e.preventDefault()
 
