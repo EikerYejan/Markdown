@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react"
-import { parse, pretty, initialHTML, initialMarkdown } from "../utils/Utils"
+import { parse, initialHTML, initialMarkdown } from "../utils/Utils"
 import CopyButton from "./CopyButton"
 import code from "../assets/images/code.svg"
 import content from "../assets/images/list.svg"
@@ -65,7 +65,7 @@ const Previewer: React.FC = () => {
         <p className="label html-label">HTML</p>
         {showSource ? (
           <section>
-            <pre>{pretty(html)}</pre>
+            <pre>{html}</pre>
           </section>
         ) : (
           <section dangerouslySetInnerHTML={{ __html: html }} /> // eslint-disable-line
@@ -74,7 +74,7 @@ const Previewer: React.FC = () => {
         <button
           onClick={switchOutput}
           type="button"
-          title="Show code"
+          title={showSource ? "Show content" : "Show code"}
           className={`output-switch ${showSource ? "is-active" : ""}`}
         >
           <img className="code" src={code} alt="show-code" />

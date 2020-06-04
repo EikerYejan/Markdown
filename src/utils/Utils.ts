@@ -1,7 +1,5 @@
 import marked from "marked"
 import { sanitize } from "dompurify"
-import { format } from "prettier/standalone"
-import htmlPaser from "prettier/parser-html"
 
 /**
  * Parse Markdown string
@@ -19,15 +17,6 @@ const parse = (html: string): string => {
   return sanitize(parsed)
 }
 
-/**
- * Format html string
- */
-const pretty = (html: string): string =>
-  format(html, {
-    parser: "html",
-    plugins: [htmlPaser],
-  })
-
 const initialMarkdown = `# How does this previewer work?
 
 - You write your Markdown on the left side.
@@ -38,4 +27,4 @@ ${"`<b>This is a code block.</b>`"}
 Check the [repo](https://github.com/EikerYejan/Markdown).`
 const initialHTML = parse(initialMarkdown)
 
-export { parse, pretty, initialMarkdown, initialHTML }
+export { parse, initialMarkdown, initialHTML }

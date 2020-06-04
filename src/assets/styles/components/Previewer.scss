@@ -90,6 +90,7 @@ $height: calc(100vh - #{170 * $px});
       color: $white;
       font-family: $font_mono;
       white-space: pre-wrap;
+      word-break: break-word;
       overflow: hidden;
     }
 
@@ -107,9 +108,9 @@ $height: calc(100vh - #{170 * $px});
     }
 
     section {
+      @include cubicBezier(450ms);
       padding: 60 * $px 20 * $px;
       opacity: 1;
-      transition: 450ms cubic-bezier(1, 0, 0, 1);
     }
 
     &.is-changing {
@@ -120,6 +121,7 @@ $height: calc(100vh - #{170 * $px});
 
     .output-switch {
       @include flexCenter;
+      @include cubicBezier(400ms);
       background: none;
       position: absolute;
       top: 0;
@@ -134,7 +136,10 @@ $height: calc(100vh - #{170 * $px});
       border-left-style: solid;
       cursor: pointer;
       overflow: hidden;
-      transition: 400ms cubic-bezier(1, 0, 0, 1);
+
+      &:hover {
+        background: $blue;
+      }
 
       img {
         position: absolute;
