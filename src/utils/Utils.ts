@@ -14,17 +14,29 @@ const parse = (html: string): string => {
   })
 
   // Sanitize HTML
-  return sanitize(parsed)
+  const sanitized = sanitize(parsed)
+
+  // Resolve
+  return sanitized
 }
 
+/**
+ * Initial Markdown
+ */
+const vw = window.innerWidth
+const isMobile = vw <= 768
 const initialMarkdown = `# How does this previewer work?
 
-- You write your Markdown on the left side.
-- You get your parsed HTML on the left side.
+- You write your Markdown on the ${isMobile ? "top" : "left"} side.
+- You get your parsed HTML on the ${isMobile ? "bottom" : "right"} side.
 
 ${"`<b>This is a code block.</b>`"}
 
 Check the [repo](https://github.com/EikerYejan/Markdown).`
+
+/**
+ * Initial parsed HTML
+ */
 const initialHTML = parse(initialMarkdown)
 
 export { parse, initialMarkdown, initialHTML }

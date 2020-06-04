@@ -31,3 +31,58 @@ ul {
   list-style: disc;
   list-style-position: inside;
 }
+
+/* Selection */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a,
+span,
+textarea {
+  &::selection {
+    color: $black;
+    background: $white;
+  }
+}
+
+code {
+  &::selection {
+    background: $black;
+    color: $white;
+  }
+}
+
+/* App Wrapper */
+.previewer-wrapper {
+  position: relative;
+  min-height: calc(100vh - #{170 * $px});
+
+  .loader {
+    width: 30 * $px;
+    height: 30 * $px;
+    position: absolute;
+    right: calc(50% - #{15 * $px});
+    top: calc(50% - #{15 * $px});
+  }
+}
+
+/* Scrollbars */
+textarea,
+.output-wrapper section {
+  &::-webkit-scrollbar {
+    width: 8 * $px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $blue;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $black;
+  }
+}

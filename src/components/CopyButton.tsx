@@ -4,6 +4,8 @@ import toast from "cogo-toast"
 import clipboard from "../assets/images/clipboard.svg"
 import "../assets/styles/components/CopyButton.scss"
 
+type HandleCopy = (e: React.SyntheticEvent<HTMLButtonElement>) => void
+
 type Props = {
   toCopy: string
   className?: string
@@ -13,7 +15,7 @@ const CopyButton: React.FC<Props> = ({ toCopy, className }) => {
   /**
    * Copy text to clipboard
    */
-  const handleCopy = (e: React.SyntheticEvent<HTMLButtonElement>): void => {
+  const handleCopy: HandleCopy = (e) => {
     /* Prevent default */
     e.preventDefault()
 
@@ -29,8 +31,7 @@ const CopyButton: React.FC<Props> = ({ toCopy, className }) => {
 
   return (
     <button
-      className={`copy-button ${className ?? ""}`}
-      data-copy="markdown"
+      className={`copy-button has-tooltip ${className ?? ""}`}
       title="Copy to clipboard"
       onClick={handleCopy}
       type="button"

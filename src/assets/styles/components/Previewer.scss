@@ -107,6 +107,10 @@ $height: calc(100vh - #{170 * $px});
       line-height: 1.2;
     }
 
+    code {
+      padding: 15 * $px;
+    }
+
     section {
       @include cubicBezier(450ms);
       padding: 60 * $px 20 * $px;
