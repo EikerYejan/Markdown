@@ -2,7 +2,10 @@
 
 .header {
   @include flexCenter(space-between);
-  border-bottom: 1 * $px solid $borders;
+  border-width: 1 * $px;
+  border-color: $borders;
+  border-bottom-style: solid;
+  border-top-style: solid;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +13,7 @@
   padding: 0 5%;
   background: $black;
   z-index: 1;
+  overflow: hidden;
 
   &,
   &__logo,
@@ -55,15 +59,6 @@
           margin-right: 0;
         }
       }
-    }
-  }
-}
-
-@media screen and (max-width: 600 * $px) {
-  .header {
-    &__logo,
-    &__end {
-      border: none;
     }
   }
 }

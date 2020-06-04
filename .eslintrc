@@ -19,6 +19,10 @@
     "quotes": 0,
     "linebreak-style": 0,
     "import/no-unresolved": 0,
+    "object-curly-newline": 0,
+    "implicit-arrow-linebreak": 0,
+    "no-unused-expressions": 0,
+    "react/prop-types": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/extensions": [
       "error",
