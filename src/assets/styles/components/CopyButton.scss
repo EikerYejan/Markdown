@@ -32,10 +32,8 @@
   &:hover {
     background: $blue;
   }
-}
 
-@media screen and (max-width: 768 * $px) {
-  .copy-button {
+  @include mobile {
     border-right-style: unset;
   }
 }
