@@ -1,3 +1,17 @@
+[![PWA Shields](https://www.pwa-shields.com/1.0.0/series/dark/green.svg)](https://md-previewer.now.sh)
+
+## [Live version](https://md-previewer.now.sh)
+
+## Used in this project
+- [Typescript](https://github.com/microsoft/TypeScript)
+- [React](https://github.com/facebook/react)
+- [Bulma](https://github.com/jgthms/bulma)
+- [marked](https://github.com/markedjs/marked)
+- [DOMPurify](https://github.com/cure53/DOMPurify)
+- [copy-to-clipboard](https://github.com/sudodoki/copy-to-clipboard)
+- [cogo-toast](https://github.com/Cogoport/cogo-toast)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
