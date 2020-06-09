@@ -109,6 +109,9 @@ $height: calc(100vh - #{170 * $px});
 
     code {
       padding: 15 * $px;
+      word-break: keep-all;
+      white-space: nowrap;
+      overflow-y: scroll;
     }
 
     section {
@@ -178,11 +181,9 @@ $height: calc(100vh - #{170 * $px});
       }
     }
   }
-}
 
-@media screen and (max-width: 768 * $px) {
-  .previewer-wrapper {
-    .output-wrapper section,
+  @include mobile {
+    .output-wrapper,
     .input-wrapper textarea {
       padding-top: 55 * $px;
     }
