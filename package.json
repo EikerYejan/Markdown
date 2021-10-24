@@ -7,7 +7,7 @@
     "cogo-toast": "^4.2.3",
     "copy-to-clipboard": "^3.3.1",
     "dompurify": "^2.0.11",
-    "marked": "^1.1.0",
+    "marked": "^3.0.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -39,12 +39,12 @@
   },
   "devDependencies": {
     "@testing-library/dom": "^8.10.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/clipboard": "^2.0.1",
     "@types/dompurify": "^2.0.2",
-    "@types/jest": "^24.0.0",
+    "@types/jest": "^27.0.2",
     "@types/marked": "^0.7.4",
     "@types/node": "^12.0.0",
     "@types/prettier": "^2.0.1",
@@ -63,7 +63,7 @@
     "lint-staged": "^10.2.7",
     "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
-    "typescript": "~3.7.2"
+    "typescript": "^4.4.4"
   },
   "config": {
     "commitizen": {
