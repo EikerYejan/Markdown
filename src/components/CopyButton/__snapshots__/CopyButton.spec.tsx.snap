@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CopyButton Should render 1`] = `
+<body>
+  <div>
+    <button
+      class="copy-button has-tooltip "
+      title="Copy to clipboard"
+      type="button"
+    >
+      <img
+        alt="copy-markdown"
+        src="clipboard.svg"
+      />
+    </button>
+  </div>
+</body>
+`;

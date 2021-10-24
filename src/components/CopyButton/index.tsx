@@ -1,8 +1,8 @@
-import React from "react"
-import copy from "copy-to-clipboard"
-import toast from "cogo-toast"
-import clipboard from "../assets/images/clipboard.svg"
-import "../assets/styles/components/CopyButton.scss"
+import React from 'react'
+import copy from 'copy-to-clipboard'
+import toast from 'cogo-toast'
+import clipboard from '../../assets/images/clipboard.svg'
+import '../../assets/styles/components/CopyButton.scss'
 
 type HandleCopy = (e: React.SyntheticEvent<HTMLButtonElement>) => void
 
@@ -23,15 +23,15 @@ const CopyButton: React.FC<Props> = ({ toCopy, className }) => {
     copy(toCopy)
 
     /* Show toast */
-    toast.success("Copied to clipboard", {
-      position: "top-right",
+    toast.success('Copied to clipboard', {
+      position: 'top-right',
       hideAfter: 2,
     })
   }
 
   return (
     <button
-      className={`copy-button has-tooltip ${className ?? ""}`}
+      className={`copy-button has-tooltip ${className ?? ''}`}
       title="Copy to clipboard"
       onClick={handleCopy}
       type="button"
