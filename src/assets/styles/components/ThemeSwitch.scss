@@ -1,0 +1,61 @@
+@import '../common/common';
+
+.theme-switch {
+  @include flexCenter;
+  background: $white;
+  width: 32 * $px;
+  height: 32 * $px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+
+  .theme-switch__icons {
+    @include flexCenter;
+    overflow: hidden;
+
+    img {
+      width: 24px;
+      height: 24px;
+      display: block;
+      margin: auto;
+      transition: 0.05s linear;
+      opacity: 1;
+
+      &.light_icon {
+        transform: translateY(40px);
+        position: absolute;
+        opacity: 0;
+      }
+
+      &.dark_icon {
+        filter: invert(1) !important;
+      }
+    }
+  }
+
+  &.is-dark {
+    background: $white;
+
+    .theme-switch__icons {
+      img {
+        filter: none;
+
+        &.dark_icon {
+          transform: translateY(-40px);
+          opacity: 0;
+        }
+
+        &.light_icon {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @include mobile {
+    bottom: 100 * $px;
+  }
+}

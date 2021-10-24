@@ -1,4 +1,4 @@
-@import "../common/common";
+@import '../common/common';
 
 .header {
   @include flexCenter(space-between);
@@ -24,7 +24,7 @@
   &__logo,
   &__end {
     @include flexCenter;
-    width: calc(10% + #{100 * $px});
+    width: calc(10% + #{120 * $px});
   }
 
   &__logo {

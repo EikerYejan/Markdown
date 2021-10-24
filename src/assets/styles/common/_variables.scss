@@ -1,13 +1,24 @@
+:root {
+  --textColor: #fff;
+  --bodyBackground: #000;
+  --borderColor: #5c6268;
+
+  .theme-light {
+    --textColor: #000;
+    --bodyBackground: #fff;
+  }
+}
+
 // Units
 $px: 0.0625rem;
 
 // Fonts
-$font_mono: "Roboto Mono";
-$font_main: "Poppins";
+$font_mono: 'Roboto Mono';
+$font_main: 'Poppins';
 
 // Colors
-$black: #000;
-$white: #fff;
-$borders: #5c6268;
+$black: var(--bodyBackground);
+$white: var(--textColor);
+$borders: var(--borderColor);
 $blue: #2188ff;
 $red: #ea4a5a;
