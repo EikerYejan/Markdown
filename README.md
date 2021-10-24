@@ -1,4 +1,4 @@
-[![PWA Shields](https://www.pwa-shields.com/1.0.0/series/dark/green.svg)](https://md-previewer.now.sh)
+[![PWA Shields](https://www.pwa-shields.com/1.0.0/series/dark/green.svg)](https://md-previewer.now.sh)&nbsp;&nbsp;&nbsp;&nbsp;[![codecov](https://codecov.io/gh/EikerYejan/Markdown/branch/master/graph/badge.svg?token=4AVREER427)](https://codecov.io/gh/EikerYejan/Markdown)
 
 ## [Live version](https://md-previewer.now.sh)
 
